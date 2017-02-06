@@ -19,12 +19,11 @@
           <h2 class="heading-medium">
             Your enquiry
           </h2>
-        
-        
+
         </th>
-      </tr>   
+      </tr>
     </thead>
-  
+
     <tbody>
       <tr>
         <td>
@@ -47,13 +46,14 @@
 
 <h2 class="heading-medium"> From what you've told us, we think these pages might help</h2>
 
-
-<li><a href="https://www.gov.uk{{results[0].link}}">{{ results[0].title }}</a>
-</li>
-<li><a href="https://www.gov.uk{{results[1].link}}">{{ results[1].title }}</a>
-</li>
-<li><a href="https://www.gov.uk{{results[2].link}}">{{ results[2].title }}</a>
-</li>
+<ul>
+  <li><a href="https://www.gov.uk{{results[0].link}}">{{ results[0].title }}</a>
+  </li>
+  <li><a href="https://www.gov.uk{{results[1].link}}">{{ results[1].title }}</a>
+  </li>
+  <li><a href="https://www.gov.uk{{results[2].link}}">{{ results[2].title }}</a>
+  </li>
+</ul>
 <p><a href="https://www.gov.uk/search?q={{enquiry}}">More results...</a></p>
 
 
@@ -65,7 +65,7 @@
         Do these answer your enquiry?
     </legend>
 
-    <label class="block-label" for="radio-home-address" data-target="great">
+    <label class="block-label selection-button-radio" for="radio-home-address" data-target="great">
          <input id="radio-home-address" type="radio" name="radio-indent-group" value="Yes">
             Yes, I no longer want to submit my enquiry
     </label>
@@ -74,32 +74,32 @@
 </div>
 
 
-    <label class="block-label" for="radio-other-address" data-target="contact-details">
+    <label class="block-label selection-button-radio" for="radio-other-address" data-target="contact-details">
          <input id="radio-other-address" type="radio" name="radio-indent-group" value="No">
             No, I would like to submit my enquiry
     </label>
 
-  </fieldset>            
+  </fieldset>
 
-  
+
 
 <!-- Contact Details -->
   <div class="panel panel-border-narrow js-hidden" id="contact-details">
- 
+
     <legend class="heading-medium">Submit your enquiry and we will try to answer</legend>
         <p><a href={{passport_link}}>{{passport}}</a></p>
         <p><a href={{visa_link}}>{{visa}}</a></p>
         <p>{{assault}}</p>
-      
+
     <fieldset id="contact_details">
-      
+
       <p class="group">
         <label for="name">Your name</label>
         <input name="contactname" id="name" type="text" class="form-control-1-3 full-name" value={{ contact_name_display }}>
-      
+
       </p>
       <p>
-      
+
         <label for="email">Your email address</label>
         <input name="contactemail" id="email" type="email" class="form-control-1-3 email" value={{ contact_email_display }}>
 
@@ -111,15 +111,15 @@
       <label for="textdetails">Enquiry</label>
         <textarea name="enquirytext" class="form-control-2-3 counted" id="textdetails" required aria-required="true" >{{enquirytext_display}}</textarea>
       </p>
-     
+
       <p>
       <label for="country">Country</label>
         <input name="country" id="country" type="text" class="full-name" value="{{country_display}}" >
-      </p> 
+      </p>
       <p>
-        <input name="TAPE" id="TAPE" type="checkbox" value="Travel Advice">I'm looking for advice on travelling to this country</p>  
+        <input name="TAPE" id="TAPE" type="checkbox" value="Travel Advice">I'm looking for advice on travelling to this country</p>
 
-      
+
     </fieldset>
 
     <p>
@@ -132,7 +132,7 @@
         </div>
     </details>
     </p>
- 
+
 <br>
   <div class="form-group">
       <input type="submit" class="button" value="Send now">
@@ -140,7 +140,7 @@
 
   </div>
  </div>
-  
+
 </form>
  <p></p>
 </main>
