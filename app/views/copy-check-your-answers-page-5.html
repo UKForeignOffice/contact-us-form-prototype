@@ -94,13 +94,13 @@
     <fieldset id="contact_details">
       
       <p class="group">
-        <label for="name">Your name</label>
+        <label for="name">Your name</label><br>
         <input name="contactname" id="name" type="text" class="form-control-1-3 full-name" value={{ contact_name_display }}>
       
       </p>
       <p>
       
-        <label for="email">Your email address</label>
+        <label for="email">Your email address</label><br>
         <input name="contactemail" id="email" type="email" class="form-control-1-3 email" value={{ contact_email_display }}>
 
       </p>
@@ -108,39 +108,14 @@
 <p></p>
     <fieldset id="enquiry">
       <p>
-      <label for="textdetails">Enquiry</label>
-        <textarea name="enquirytext" class="form-control-2-3 counted" id="textdetails" required aria-required="true" >{{enquirytext_display}}</textarea>
+      <label for="textdetails">Enquiry Title</label><br>
+        <input type="text" name="enquirytext" class="form-control-2-3 counted" id="textdetails" required aria-required="true" value="{{enquirytext_display}}"></input>
       </p>
-      <p>
-        <input name="TAPE" id="TAPE" type="checkbox" value="Travel Advice">I'm looking for advice on travelling to this country</p>  
-      <p>
-      <label for="country">Country</label>
-        <input name="country" id="country" type="text" class="full-name" value="{{country_display}}" >
-      </p> 
-      <p>
-      <details>
-        <summary><span class="summary">Click if you want to submit your enquiry to a particular Embassy</span></summary>
-          <div class="panel panel-border-narrow"> 
-          <label class="block-label" for="radio-home-post">
-            <input id="radio-home-post" type="radio" name="radio-indent-group" value="Madrid">
-            Madrid
-          </label>
-          <label class="block-label" for="radio-home-post">
-            <input id="radio-home-post" type="radio" name="radio-indent-group" value="Malaga">
-            Malaga
-          </label>
-          <label class="block-label" for="radio-home-post">
-            <input id="radio-home-post" type="radio" name="radio-indent-group" value="Barcelona">
-            Barcelona
-          </label>
-          <label class="block-label" for="radio-home-post">
-            <input id="radio-home-post" type="radio" name="radio-indent-group" value="Other">
-            Other
-          </label>
-          </div>
-      </details>
+       <p>
+      <label for="textdetails">Enquiry Detail</label><br>
+        <textarea type="textarea" name="enquirydetail" class="form-control-2-3 counted" id="textdetails2" required aria-required="true"></textarea>
       </p>
-
+    
       
     </fieldset>
 
