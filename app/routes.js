@@ -25,10 +25,12 @@ res.redirect('copy-forms-4');
 router.get('/copy-forms-5', function (req, res){
 
 var country_display = req.query.country
+var post_display = req.query.post
 var id = req.query.id
-var viewData = {country_display:country_display, id:id}
+var viewData = {country_display:country_display, post_display:post_display, id:id}
 
 console.dir (country_display)
+console.dir (post_display)
 console.dir (id)
 
 res.render ('copy-forms-5', viewData)
@@ -329,22 +331,27 @@ router.get('/copy-check-your-answers-page-5',function (req, res){
   var contact_name_display = req.query.contactname
   var contact_email_display = req.query.contactemail
   var enquirytext_display = req.query.enquirytext
-  var country_display = req.query.Country
+  var country_display = req.query.country_display
+  var post_display = req.query.post_display
+  var reference_number = req.query.ref
   var enquiry1 = keyword_extractor.extract(enquirytext_display,{
     language:'english',
     remove_digits: true,
     return_changed_case:true,
     remove_duplicates: false
   })
-  var enquiry = enquiry1+'+'+country_display
+  var enquiry = enquiry1+' '+country_display
   var passport = "But please note, British Embassies can no longer deal with enquiries regarding replacing or renewing a passport. Click here to get, renew or replace a passport."
   var passport_link = 'https://www.gov.uk/apply-renew-passport'
   var visa = "But please note, British Embassies can no longer deal with enquiries regarding visas. Please contact UK Visas and Immigration."
   var visa_link = 'https://www.gov.uk/check-uk-visa'
   var assault = "If you have been assaulted and require assistance from embassy staff, please call us directly."
   
+  var date = new Date()
+
     console.dir(enquirytext_display)
     console.dir(enquiry)
+    console.dir(date)
 
   request('https://www.gov.uk/api/search.json?count=3&q='+enquiry, function(error, response, body){
 
@@ -403,7 +410,9 @@ else
       enquirytext_display: enquirytext_display,
       contact_email_display: contact_email_display,
       country_display: country_display,
-      enquiry: enquiry
+      post_display: post_display,
+      enquiry: enquiry,
+      reference_number: reference_number
     }
 
   // if (enquirytext_display.includes (passport) == true) {
@@ -465,6 +474,34 @@ res.render('confirmation-page-3', {'contact_email_display' : contact_email_displ
 
 });
 
+router.get('/confirmation-page-5',function (req, res){
+
+// get the answer from the query string (?fullnamename=john) and set it as a variable so you can use it  
+
+var contact_name_display = req.query.contactname
+var contact_email_display = req.query.contactemail
+var enquirytext_display = req.query.enquirytext
+var enquirydetail_display = req.query.enquirydetail
+var country_display = req.query.country_display
+var post_display = req.query.post_display
+var reference_number = "ENQ-0001-001"
+
+var viewData = {
+  'contact_name_display' : contact_name_display,
+  'contact_email_display' : contact_email_display, 
+  'enquirytext_display' : enquirytext_display, 
+  'country_display' : country_display, 
+  'enquirydetail_display' : enquirydetail_display,
+  'post_display' : post_display,
+  'reference_number' : reference_number
+}
+
+
+console.dir(req.query.enquirytext)
+console.dir(enquirytext_display)
+
+res.render('confirmation-page-5', viewData)
+});
 
 // Passing data into a page, dynamic version
 // this is going from fullname (input name in form_post_data) -> fullname_form (captured as variable here) -> fullname_display (the variable in form_show_data html source)

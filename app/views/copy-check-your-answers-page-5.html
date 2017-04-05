@@ -9,41 +9,9 @@
 <main id="content" role="main">
 
   <h1 class="heading-large">
-    Finding answers quickly
+    Suggested answers
   </h1>
  <table>
-
-    <thead>
-      <tr>
-        <th colspan="2">
-          <h2 class="heading-medium">
-            Your enquiry
-          </h2>
-        
-        
-        </th>
-      </tr>   
-    </thead>
-  
-    <tbody>
-      <tr>
-        <td>
-          Your enquiry
-        </td>
-        <td>
-          {{ enquirytext_display }}
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Your country
-        </td>
-        <td>
-          {{ country_display }}
-        </td>
-      </tr>
-    </tbody>
-  </table>
 
 <h2 class="heading-medium"> From what you've told us, we think these pages might help</h2>
 
@@ -57,7 +25,7 @@
 <p><a href="https://www.gov.uk/search?q={{enquiry}}">More results...</a></p>
 
 
-<form action="/confirmation-page-3" method="get" class="form">
+<form action="/confirmation-page-5" method="get" class="form">
 
   <fieldset id="radio-enquiry-answer">
 
@@ -65,7 +33,7 @@
         Do these answer your enquiry?
     </legend>
 
-    <label class="block-label" for="radio-home-address" data-target="great">
+    <label class="block-label selection-button-radio" for="radio-home-address" data-target="great">
          <input id="radio-home-address" type="radio" name="radio-indent-group" value="Yes">
             Yes, I no longer want to submit my enquiry
     </label>
@@ -74,7 +42,7 @@
 </div>
 
 
-    <label class="block-label" for="radio-other-address" data-target="contact-details">
+    <label class="block-label selection-button-radio" for="radio-other-address" data-target="contact-details">
          <input id="radio-other-address" type="radio" name="radio-indent-group" value="No">
             No, I would like to submit my enquiry
     </label>
@@ -86,7 +54,7 @@
 <!-- Contact Details -->
   <div class="panel panel-border-narrow js-hidden" id="contact-details">
  
-    <legend class="heading-medium">Submit your enquiry and we will try to answer</legend>
+    <legend class="heading-medium">Submit your enquiry to the team in {{post_display}}</legend>
         <p><a href={{passport_link}}>{{passport}}</a></p>
         <p><a href={{visa_link}}>{{visa}}</a></p>
         <p>{{assault}}</p>
@@ -108,17 +76,21 @@
 <p></p>
     <fieldset id="enquiry">
       <p>
-      <label for="textdetails">Enquiry Title</label><br>
-        <input type="text" name="enquirytext" class="form-control-2-3 counted" id="textdetails" required aria-required="true" value="{{enquirytext_display}}"></input>
+      <label for="textdetails">What your enquiry is about</label><br>
+        <input type="text" name="enquirytext" class="form-control-2-3 counted" id="textdetails" required aria-required="true" value="{{reference_number}} {{enquirytext_display}}"></input>
       </p>
        <p>
-      <label for="textdetails">Enquiry Detail</label><br>
+      <label for="textdetails">Details of your enquiry</label><br>
         <textarea type="textarea" name="enquirydetail" class="form-control-2-3 counted" id="textdetails2" required aria-required="true"></textarea>
+        <p id="textdetailscounter" class="hint" aria-live="polite" aria-atomic="false">(Limit is 1200 characters)</p>
       </p>
     
       
     </fieldset>
-
+<fieldset class="visuallyhidden">
+    <input type="text" name="country_display" value="{{country_display}}">
+    <input type="text" name="post_display" value="{{post_display}}">
+</fieldset>
     <p>
     <details>
         <summary><span class="summary">We'll use the information you provide to answer your enquiry and improve our service</span></summary>
