@@ -11,6 +11,22 @@
  <div class="grid-row">
   <div class="column-two-thirds">
 
+
+ {%  if intercept %} 
+
+ {{ interceptTitle }}
+ {{ interceptDescription }}
+ {{ interceptLink1 }}
+ {{ interceptLink2 }}
+
+{% endif %}
+
+
+{%  if resultdescriptions %} 
+<br><br> show me descriptions por favor
+{% endif %}
+
+
   <h1 class="heading-large">
     Suggested answers
   </h1>
@@ -19,7 +35,7 @@
 <h2 class="heading-medium"> From what you've told us, we think these pages might help</h2>
 
 <ul>
-<li><a href="https://www.gov.uk{{results[0].link}}">{{ results[0].title }}</a></li>
+<li><a href="https://www.gov.uk{{results[0].link}}">{{ results[0].title }}</a></br>{{ results[0].description }}</li>
 <li><a href="https://www.gov.uk{{results[1].link}}">{{ results[1].title }}</a></li>
 <li><a href="https://www.gov.uk{{results[2].link}}">{{ results[2].title }}</a></li>
 <li><a href="https://www.gov.uk{{results[0].link}}">{{ results[3].title }}</a></li>

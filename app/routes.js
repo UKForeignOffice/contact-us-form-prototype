@@ -3,32 +3,43 @@ var router = express.Router();
 var request = require('request');
 var keyword_extractor = require('keyword-extractor');
 
+
+// Session open and check
+var session = require('express-session');
+
 // Route index page
  router.get('/', function (req, res) {
  res.redirect('index')  
  });
 
-// More redirecting
 
-// router.get('/copy-forms',function (req, res){
+//THE BIG RESET FUNCTION!
+router.get('/index', function (req, res) {
+  //resetAll();
+  req.session.destroy();
+  console.log("reset");
+  res.render('index');
 
-// res.redirect('copy-forms-4');
-
-// });
-
+});
 
 
 
 // Start, passing country through url
 
-router.get('/enquiry-start', function (req, res){
+router.get('/enquiry-start', function (req, res, next){
+  for (var propName in req.query) {
+    if (req.query.hasOwnProperty(propName)) {
+      req.session[propName] = req.query[propName];
+    }
+  }
 
-var country_display = req.query.country
-var post_display = req.query.post
-var viewData = {country_display:country_display, post_display:post_display}
+var viewData = {
+  'country_display' : req.session.country, 
+  'post_display' : req.session.post
+}
 
-console.dir (country_display)
-console.dir (post_display)
+console.dir (req.session.country)
+console.dir (req.session.post)
 
 res.render ('enquiry-start', viewData)
 
@@ -37,100 +48,82 @@ res.render ('enquiry-start', viewData)
 
 // Route for enquiry results page - ** needs some tidying and removing of old stuff **
 
-router.get('/enquiry-results',function (req, res){
+router.get('/enquiry-results', function (req, res, next){
+  for (var propName in req.query) {
+    if (req.query.hasOwnProperty(propName)) {
+      req.session[propName] = req.query[propName];
+    }
+  }
 
-  var contact_name_display = req.query.contactname
-  var contact_email_display = req.query.contactemail
-  var enquirytext_display = req.query.enquirytext
-  var country_display = req.query.country_display
-  var post_display = req.query.post_display
-  var reference_number = req.query.ref
+
+  var enquirytext_display = req.session.enquirytext
+  
   var enquiry1 = keyword_extractor.extract(enquirytext_display,{
     language:'english',
     remove_digits: true,
     return_changed_case:true,
     remove_duplicates: false
   })
-  var enquiry = enquiry1+' '+country_display
-  var passport = "But please note, British Embassies can no longer deal with enquiries regarding replacing or renewing a passport. Click here to get, renew or replace a passport."
-  var passport_link = 'https://www.gov.uk/apply-renew-passport'
-  var visa = "But please note, British Embassies can no longer deal with enquiries regarding visas. Please contact UK Visas and Immigration."
-  var visa_link = 'https://www.gov.uk/check-uk-visa'
-  var assault = "If you have been assaulted and require assistance from embassy staff, please call us directly."
-  
+  var enquiry = enquiry1+' '+req.session.country
+    
   var date = new Date()
-
-    console.dir(enquirytext_display)
-    console.dir(enquiry)
-    console.dir(date)
 
   request('https://www.gov.uk/api/search.json?count=5&q='+enquiry, function(error, response, body){
 
-    var results = JSON.parse(body).results
+  var results = JSON.parse(body).results
 
-    console.dir(results)
+  console.dir(results)
+
+
+
+// Intercept section: pull out keywords and set intercept data
 
 if (enquiry.indexOf('passport') > -1) { 
-
-    var viewData = {
-      results: results,
-      contact_name_display: contact_name_display,
-      enquirytext_display: enquirytext_display,
-      contact_email_display: contact_email_display,
-      country_display: country_display,
-      enquiry: enquiry,
-      passport: passport,
-      passport_link: passport_link
-    }
-
+    var intercept = true;
+    var interceptTitle = "Help with passports";
+    var interceptDescription = "British Embassies can no longer deal with enquiries regarding replacing or renewing a passport. Apply for a standard passport here. If you need to travel urgently apply for an emergency travel document";
+    var interceptLink1 = 'https://www.gov.uk/apply-renew-passport';
+    var interceptLink2 = 'https://www.gov.uk/emergency-travel-document';
 }
 
 else if (enquiry.indexOf('visa') > -1) { 
-
-    var viewData = {
-      results: results,
-      contact_name_display: contact_name_display,
-      enquirytext_display: enquirytext_display,
-      contact_email_display: contact_email_display,
-      country_display: country_display,
-      enquiry: enquiry,
-      visa: visa,
-      visa_link: visa_link
-    }
-
+    var intercept = true;
+    var interceptTitle = "Help with visas";
+    var interceptDescription = "British Embassies can no longer deal with enquiries regarding visas. Please contact UK Visas and Immigration.";
+    var interceptLink1 = 'https://www.gov.uk/check-uk-visa';
+    var interceptLink2 = 'https://www.gov.uk/check-uk-visa';
 }
 
 else if (enquiry.indexOf('assault') > -1) { 
-
-    var viewData = {
-      results: results,
-      contact_name_display: contact_name_display,
-      enquirytext_display: enquirytext_display,
-      contact_email_display: contact_email_display,
-      country_display: country_display,
-      enquiry: enquiry,
-      assault: assault 
-    }
-
+    var intercept = true;
+    var interceptTitle = "Urgent assistance";
+    var interceptDescription = "If you have been assaulted and require assistance from embassy staff, please call us directly on XXXXXX";
 }
 
-else
+// end intercept section
+
     var viewData = {
+
+      // these have been set as variables
       results: results,
-      contact_name_display: contact_name_display,
-      enquirytext_display: enquirytext_display,
-      contact_email_display: contact_email_display,
-      country_display: country_display,
-      post_display: post_display,
       enquiry: enquiry,
-      reference_number: reference_number
+      intercept: intercept,
+      interceptTitle: interceptTitle,
+      interceptDescription: interceptDescription,
+      interceptLink1: interceptLink1,
+      interceptLink2: interceptLink2,
+
+      // these have not been set as variables, just grabbing from session, so different syntax with single quotes
+      'contact_name_display': req.session.contact_name,
+      'enquirytext_display': req.session.enquirytext,
+      'contact_email_display': req.session.contact_email,
+      'country_display': req.session.country,
+      'post_display': req.session.post,
+      'resultdescriptions' : req.session.resultdescriptions
     }
 
-  // if (enquirytext_display.includes (passport) == true) {
 
-  // console.dir(passport)
-
-    res.render('enquiry-results', viewData);
+    res.render('enquiry-results', viewData );
 
   });
 
@@ -314,6 +307,7 @@ router.get('/copy-check-your-answers-page-2',function (req, res){
   var visa_link = 'https://www.gov.uk/check-uk-visa'
   var assault = "If you have been assaulted and require assistance from embassy staff, please call us directly."
   
+
     console.dir(enquirytext_display)
     console.dir(enquiry)
 
@@ -333,7 +327,8 @@ if (enquiry.indexOf('passport') > -1) {
       country_display: country_display,
       enquiry: enquiry,
       passport: passport,
-      passport_link: passport_link
+      passport_link: passport_link,
+      interceptTitle: interceptTitle
     }
 
 }
