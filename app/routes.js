@@ -3,22 +3,182 @@ var router = express.Router();
 var request = require('request');
 var keyword_extractor = require('keyword-extractor');
 
-// Routing home page
+// Route index page
+ router.get('/', function (req, res) {
+ res.redirect('index')  
+ });
 
-router.get('/', function (req, res) {
+// More redirecting
+
+// router.get('/copy-forms',function (req, res){
+
+// res.redirect('copy-forms-4');
+
+// });
+
+
+
+
+// Start, passing country through url
+
+router.get('/enquiry-start', function (req, res){
+
+var country_display = req.query.country
+var post_display = req.query.post
+var viewData = {country_display:country_display, post_display:post_display}
+
+console.dir (country_display)
+console.dir (post_display)
+
+res.render ('enquiry-start', viewData)
+
+});
+
+
+// Route for enquiry results page - ** needs some tidying and removing of old stuff **
+
+router.get('/enquiry-results',function (req, res){
+
+  var contact_name_display = req.query.contactname
+  var contact_email_display = req.query.contactemail
+  var enquirytext_display = req.query.enquirytext
+  var country_display = req.query.country_display
+  var post_display = req.query.post_display
+  var reference_number = req.query.ref
+  var enquiry1 = keyword_extractor.extract(enquirytext_display,{
+    language:'english',
+    remove_digits: true,
+    return_changed_case:true,
+    remove_duplicates: false
+  })
+  var enquiry = enquiry1+' '+country_display
+  var passport = "But please note, British Embassies can no longer deal with enquiries regarding replacing or renewing a passport. Click here to get, renew or replace a passport."
+  var passport_link = 'https://www.gov.uk/apply-renew-passport'
+  var visa = "But please note, British Embassies can no longer deal with enquiries regarding visas. Please contact UK Visas and Immigration."
+  var visa_link = 'https://www.gov.uk/check-uk-visa'
+  var assault = "If you have been assaulted and require assistance from embassy staff, please call us directly."
   
-res.redirect('copy-forms-4')  
+  var date = new Date()
+
+    console.dir(enquirytext_display)
+    console.dir(enquiry)
+    console.dir(date)
+
+  request('https://www.gov.uk/api/search.json?count=5&q='+enquiry, function(error, response, body){
+
+    var results = JSON.parse(body).results
+
+    console.dir(results)
+
+if (enquiry.indexOf('passport') > -1) { 
+
+    var viewData = {
+      results: results,
+      contact_name_display: contact_name_display,
+      enquirytext_display: enquirytext_display,
+      contact_email_display: contact_email_display,
+      country_display: country_display,
+      enquiry: enquiry,
+      passport: passport,
+      passport_link: passport_link
+    }
+
+}
+
+else if (enquiry.indexOf('visa') > -1) { 
+
+    var viewData = {
+      results: results,
+      contact_name_display: contact_name_display,
+      enquirytext_display: enquirytext_display,
+      contact_email_display: contact_email_display,
+      country_display: country_display,
+      enquiry: enquiry,
+      visa: visa,
+      visa_link: visa_link
+    }
+
+}
+
+else if (enquiry.indexOf('assault') > -1) { 
+
+    var viewData = {
+      results: results,
+      contact_name_display: contact_name_display,
+      enquirytext_display: enquirytext_display,
+      contact_email_display: contact_email_display,
+      country_display: country_display,
+      enquiry: enquiry,
+      assault: assault 
+    }
+
+}
+
+else
+    var viewData = {
+      results: results,
+      contact_name_display: contact_name_display,
+      enquirytext_display: enquirytext_display,
+      contact_email_display: contact_email_display,
+      country_display: country_display,
+      post_display: post_display,
+      enquiry: enquiry,
+      reference_number: reference_number
+    }
+
+  // if (enquirytext_display.includes (passport) == true) {
+
+  // console.dir(passport)
+
+    res.render('enquiry-results', viewData);
+
+  });
+
 
 });
 
-// Branching
 
-router.get('/copy-forms',function (req, res){
 
-res.redirect('copy-forms-4');
+// Enquiry submission confirmation page
 
+router.get('/enquiry-confirmation',function (req, res){
+
+var contact_name_display = req.query.contactname
+var contact_email_display = req.query.contactemail
+var enquirytext_display = req.query.enquirytext
+var enquirydetail_display = req.query.enquirydetail
+var country_display = req.query.country_display
+var post_display = req.query.post_display
+var reference_number = "ENQW00186"
+
+var viewData = {
+  'contact_name_display' : contact_name_display,
+  'contact_email_display' : contact_email_display, 
+  'enquirytext_display' : enquirytext_display, 
+  'country_display' : country_display, 
+  'enquirydetail_display' : enquirydetail_display,
+  'post_display' : post_display,
+  'reference_number' : reference_number
+}
+
+
+console.dir(req.query.enquirytext)
+console.dir(enquirytext_display)
+
+res.render('enquiry-confirmation', viewData)
 });
 
+
+
+
+
+
+
+
+
+
+
+// CRUFT BELOW :-) *****************************************************
 
 // Passing country through url
 

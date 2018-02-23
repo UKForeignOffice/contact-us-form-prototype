@@ -1,0 +1,142 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Check your answers
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+{% include "includes/phase_banner_alpha.html" %}
+ <div class="grid-row">
+  <div class="column-two-thirds">
+
+  <h1 class="heading-large">
+    Suggested answers
+  </h1>
+
+
+<h2 class="heading-medium"> From what you've told us, we think these pages might help</h2>
+
+<ul>
+<li><a href="https://www.gov.uk{{results[0].link}}">{{ results[0].title }}</a></li>
+<li><a href="https://www.gov.uk{{results[1].link}}">{{ results[1].title }}</a></li>
+<li><a href="https://www.gov.uk{{results[2].link}}">{{ results[2].title }}</a></li>
+<li><a href="https://www.gov.uk{{results[0].link}}">{{ results[3].title }}</a></li>
+<li><a href="https://www.gov.uk{{results[1].link}}">{{ results[4].title }}</a></li>
+</ul>
+<p><a class="bold-xsmall" href="https://www.gov.uk/search?q={{enquiry}}">Find more results on GOV.UK</a></p>
+
+
+
+<form action="/enquiry-confirmation" method="get" class="form">
+
+  <fieldset id="radio-enquiry-answer" class="inline">
+
+    <h2 class="heading-medium">
+        Do these answer your enquiry?
+    </h2>
+
+    <label class="block-label selection-button-radio formfield-bold" for="Yes" data-target="found-what-needed">
+         <input id="Yes" type="radio" name="radio-indent-group" value="Yes">
+            Yes
+    </label>
+
+    <label class="block-label selection-button-radio formfield-bold" for="No" data-target="contact-details">
+         <input id="No" type="radio" name="radio-indent-group" value="No">
+            No, I would like to submit my enquiry
+    </label>
+
+  </fieldset>            
+
+
+<p></p>
+  
+
+<!-- Found what needed -->
+ <div class="panel panel-border-narrow js-hidden" id="found-what-needed">
+<p>We're glad you found what you needed. Give us your <a href="#" onClick="alert('Links to survey when live')">feedback</a> to help improve the service.</p>
+</div> 
+
+<!-- Contact Details -->
+  <div class="panel panel-border-narrow js-hidden" id="contact-details">
+ 
+    <legend class="heading-medium">Contact the {{post_display}}</legend>
+        <p><a href={{passport_link}}>{{passport}}</a></p>
+        <p><a href={{visa_link}}>{{visa}}</a></p>
+        <p>{{assault}}</p>
+      
+    <fieldset id="contact_details">
+      
+      <p class="group">
+        <label for="name" class="formfield-bold">Your name</label><br>
+        <input name="contactname" id="name" type="text" maxlength="100" class="form-control-1-3 full-name formfield-90" value={{ contact_name_display }}>
+      
+      </p>
+      <p>
+      
+        <label for="email" class="formfield-bold">Your email address</label><br>
+        <input name="contactemail" id="email" type="email" class="form-control-1-3 email formfield-90" value={{ contact_email_display }}>
+
+      </p>
+    </fieldset>
+<p></p>
+    <fieldset id="enquiry">
+      <p>
+      <label for="textdetails" class="formfield-bold">What your enquiry is about</label><br>
+        <input type="text" name="enquirytext" class="form-control-2-3 counted formfield-90" id="textdetails" required aria-required="true" value="{{reference_number}} {{enquirytext_display}}"></input>
+      </p>
+       <p>
+      <label for="textdetails" class="formfield-bold">Details of your enquiry</label><br>
+        <textarea type="textarea" name="enquirydetail" class="form-control-2-3 counted  formfield-100" rows="4" id="textdetails2" required aria-required="true"></textarea>
+        <p id="textdetailscounter" class="form-hint" aria-live="polite" aria-atomic="false">(Limit is 1200 characters)</p>
+      </p>
+    
+      
+    </fieldset>
+<fieldset class="visuallyhidden">
+    <input type="text" name="country_display" value="{{country_display}}">
+    <input type="text" name="post_display" value="{{post_display}}">
+</fieldset>
+  <p><label class="formfield-bold">Feedback</label><br>
+    Can we contact you for feedback to help improve our services? For more information see the <a href="#">privacy policy</a>.
+ 
+    <fieldset id="radio-enquiry-feedback" class="inline">
+    <label class="block-label selection-button-radio" for="Feedback-No">
+         <input id="Feedback-No" type="radio" name="feedback" value="No">
+            No
+    </label>
+    <label class="block-label selection-button-radio" for="Feedback-Yes">
+         <input id="Feedback-Yes" type="radio" name="feedback" value="Yes">
+            Yes
+    </label>
+
+
+</fieldset> </p>
+    <p>
+    <details>
+        <summary><span class="summary">We'll use the information you provide to answer your enquiry and improve our service</span></summary>
+        <div class="panel panel-border-narrow">
+          <p>
+            The Foreign and Commonwealth Office will use the information you provide to answer your enquiry. We may also use it to improve the service we offer to other people by analysing common questions and updating the content available on GOV.UK.
+          </p>
+        </div>
+    </details>
+    </p>
+  
+<br>
+  <div class="form-group">
+      <input type="submit" class="button" value="Send now">
+  </div>
+
+  </div>
+</div>
+  
+</form>
+ <p></p>
+
+</div>
+</div>
+</main>
+
+{% endblock %}

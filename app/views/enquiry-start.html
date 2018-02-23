@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Contact an Embassy
+{% endblock %}
+
+{% block content %}
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Select to Autocomplete</title>
+	<script src="jquery-1.11.1.min.js"></script>
+	<script src="jquery-ui.min.js"></script>
+	<script src="jquery.select-to-autocomplete.js"></script>
+	<script>
+	  (function($){
+	    $(function(){
+	      $('select').selectToAutocomplete();
+	      $('form').submit(function(){
+	        alert( $(this).serialize() );
+	        return false;
+	      });
+	    });
+	  })(jQuery);
+	</script>
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+ <div class="grid-row">
+  <div class="column-two-thirds">
+
+  <form action="/enquiry-results" method="get" class="form">
+
+    <h1 class="form-title heading-large">
+      Help for British people in {{country_display}}
+    </h1>
+<p>GOV.UK offers many government services online for British people abroad.</p>
+    <h2>Try one of these popular topics to find the service you need.</h2>
+    <p>
+    <ul>
+    <li><a href="https://www.gov.uk/check-uk-visa">Visas for entry to the UK</a></li>
+    <li><a href="https://www.gov.uk/overseas-passports">Overseas passports</a></li>
+    <li><a href="https://www.gov.uk/becoming-a-british-citizen">Enquire about British nationality</a></li>
+    <li><a href="https://www.gov.uk/government/organisations/driver-and-vehicle-licensing-agency">UK driving licences and vehicles</a></li>
+    <li><a href="https://www.gov.uk/marriage-abroad">Getting married abroad</a></li> 
+    </ul>
+  </p>
+
+
+
+ <fieldset>
+      <legend class="heading-medium">Contacting the Embassy</legend>
+<p>Before your enquiry is submitted we will suggest some GOV.UK pages that may answer your question faster. You can submit your enquiry on the next page.</p>
+      <div class="group">
+           
+           <p class="warning-message panel panel-border-narrow">Don't include personal or financial information, eg your National Insurance number or credit card details.</p>
+
+
+        <label for="textdetails" class="heading-small">What is your enquiry about?</label><br>
+        <p><input type="text" name="enquirytext" class="form-control-2-3 counted" id="textdetails" required aria-required="true"></input></p>
+
+
+        <p id="textdetailscounter" class="form-hint" aria-live="polite" aria-atomic="false">(Limit is 75 characters)</p>
+      </div>
+    </fieldset>
+
+<fieldset class="visuallyhidden">
+    <input type="text" name="country_display" value="{{country_display}}">
+    <input type="text" name="post_display" value="{{post_display}}">
+</fieldset>
+
+    <div class="form-group">
+      <input type="submit" class="button button-start" value="Search">
+    </div>
+
+  </form>
+  <a class="button visuallyhidden" href="/skip-to-form" role="button">Skip</a>
+
+</div>
+</div>
+</main>
+{% endblock %}

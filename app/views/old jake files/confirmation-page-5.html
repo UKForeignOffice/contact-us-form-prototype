@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Check your answers
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <div class="govuk-box-highlight">
+        <h1 class="bold-large">Enquiry Submitted</h1>
+        <p>
+          Your reference number is <br>
+          <strong class="heading-medium">{{ reference_number }}</strong>
+        </p>
+      </div>
+      <p>We have sent you a confirmation email.</p>
+
+ <table>
+
+    <thead>
+      <tr>
+        <th colspan="2">
+          <h2 class="heading-medium">
+            What you submitted
+          </h2>
+
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>
+          Your name
+        </td>
+        <td>
+          {{ contact_name_display }}
+        </td>
+      </tr>      <tr>
+        <td>
+          Your email address
+        </td>
+        <td>
+          {{ contact_email_display }}
+        </td>
+      </tr>      
+      <tr>
+        <td>
+          What your enquiry is about
+        </td>
+        <td>
+          {{ enquirytext_display }}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Details of your enquiry
+        </td>
+        <td>
+          {{ enquirydetail_display }}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Country or Territory
+        </td>
+        <td>
+          {{ country_display }}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Location submitted to
+        </td>
+        <td>
+          {{ post_display }}
+        </td>
+      </tr>      
+    </tbody>
+  </table>
+
+<br><p>
+If you have made a mistake in your enquiry, please <a href="/copy-check-your-answers-page-5?ref={{reference_number}}&country_display={{country_display}}&post_display={{post_display}}&enquirytext={{enquirytext_display}}">resubmit your enquiry with the reference number {{ reference_number }}</a> letting us know what the mistake was.
+</p>
+      <h2 class="heading-medium">What happens next</h2>
+      <p>We've sent your enquiry to a consular officer.</p>
+      <p>They will review your enquiry and respond as soon as they can within 10 working days.</p>
+      <p><a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html">What did you think of this service?</a> (takes 30 seconds)</p>
+
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}
