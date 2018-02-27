@@ -17,13 +17,13 @@
       </p>
 
 
-      <h2 class="heading-medium">Prototype versions</h2>
+      <h2 class="heading-medium">Search journey prototype</h2>
 
-      <ul class="list list-bullet">
-        <li>Current production design</a>, search journey, choose parameters: </li>
+      
+       Choose your options:
 
           <!-- Try with <a href="enquiry-start?country=Spain&post=British Embassy Malaga&resultsdescriptions=Yes">search result descriptions on</a> or with <a href="enquiry-start?country=Spain&post=British Embassy Malaga">descriptions off</a>. Try <a href="enquiry-start?country=Spain&post=British Embassy Malaga&interceptStyle=interruption">interruption on</a>. -->
-      </ul>
+     
 
 <form action="/enquiry-start" method="get" class="form">
 
@@ -122,7 +122,7 @@
 <p></p>
 
  <div class="panel panel-border-narrow js-hidden" id="intercept-keywords-interruption">
-<p>To trigger an intercept, include one of the following words in your enquiry subject on the next page: <strong class="bold-small">passport, visa, assault</strong>. Options if continuing beyond the interruption:
+<p>To trigger an intercept, include one of the following words in your enquiry subject on the next page: <strong class="bold-small">passport, visa, assault</strong>. <br><br>If continuing beyond the interruption show:
    <fieldset id="formonly" class="inline">
     <label class="block-label selection-button-radio" for="formOnlyNo">
     <input id="formOnlyNo" type="radio" name="formOnly" value="No">
@@ -142,11 +142,24 @@
 
 
 <br>  
-<input type="submit" class="button button-start" value="Try it">
+<input type="submit" class="button button-start" value="Try this combination">
 
 </div>
 </form>
 
+<Br clear="all">
+
+<p></p>
+
+
+      <h2 class="heading-medium">Canned searches</h2>
+
+      
+       Some combinations that work well, bi-passing the initial enquiry subject page:
+      <ul class="list list-bullet">
+        <li>For high priority assistance, keyword "assault": <a href="/enquiry-results?enquirytext=assault&country=Spain&post=British+Embassy+Malaga&resultsdescriptions=&interceptStyle=interruption&formOnly=Yes">interruption card followed by form, without search results</a></li>
+        <li>For medium priority signposting, keyword "visa": <a href="/enquiry-results?enquirytext=visa&country=Spain&post=British+Embassy+Malaga&resultsdescriptions=Yes&interceptStyle=inset">inset text above search results with descriptions</a></li>
+      </ul>
 
 
 

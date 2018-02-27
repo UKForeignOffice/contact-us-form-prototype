@@ -100,7 +100,7 @@ else if (enquiry.indexOf('visa') > -1) {
 else if (enquiry.indexOf('assault') > -1) { 
     var intercept = "Yes";
     var interceptTitle = "Get help urgently";
-    var interceptDescription = "If you need immediate help call the embassy on 012345678908. It's best to call us if you need help because of an assault, accident or arrest.";
+    var interceptDescription = "If you need immediate help call the embassy on 012345 678901. It's best to call us if you need help because of an assault, accident or arrest.";
 }
 
 // end intercept section

@@ -16,7 +16,6 @@
 <p><a class="bold-xsmall" href="https://www.gov.uk/search?q={{enquiry}}">Find more results on GOV.UK</a></p>
 
 
-
 <form action="/enquiry-confirmation" method="get" class="form">
 
   <fieldset id="radio-enquiry-answer" class="inline">
@@ -46,13 +45,11 @@
 <p>We're glad you found what you needed. Give us your <a href="#" onClick="alert('Links to survey when live')">feedback</a> to help improve the service.</p>
 </div> 
 
-<!-- Contact Details -->
-  <div class="panel panel-border-narrow js-hidden" id="contact-details">
- 
+<!-- Contact form -->
+<div class="panel panel-border-narrow js-hidden" id="contact-details">
+
+
     <legend class="heading-medium">Contact the {{post_display}}</legend>
-        <p><a href={{passport_link}}>{{passport}}</a></p>
-        <p><a href={{visa_link}}>{{visa}}</a></p>
-        <p>{{assault}}</p>
       
     <fieldset id="contact_details">
       
@@ -82,10 +79,7 @@
     
       
     </fieldset>
-<fieldset class="visuallyhidden">
-    <input type="text" name="country_display" value="{{country_display}}">
-    <input type="text" name="post_display" value="{{post_display}}">
-</fieldset>
+
   <p><label class="formfield-bold">Feedback</label><br>
     Can we contact you for feedback to help improve our services? For more information see the <a href="#">privacy policy</a>.
  
@@ -116,10 +110,9 @@
   <div class="form-group">
       <input type="submit" class="button" value="Send now">
   </div>
-
-  </div>
-</div>
-  
+ 
 </form>
- <p></p>
+
+<p></p>
+</div>
 
