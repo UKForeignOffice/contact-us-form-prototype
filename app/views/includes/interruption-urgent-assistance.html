@@ -1,0 +1,31 @@
+
+<div class="grid-row">
+    <div class="column-full">
+<form action="/enquiry-results" method="get" class="form">
+        <div class="flash-card">
+            <header>
+        <h1 id="header" class="heading-large">Before you continue</h1>
+            </header>
+        <div class="grid-row ">
+            <div class="column-two-thirds">
+                <p> Consular officers respond to written enquiries as soon as they can, within 10 working days.</p>
+
+                <h2 class="heading-medium">{{ interceptTitle }}</h2>
+                <p>{{ interceptDescription }} <a href="{{ interceptLink1 }}">{{ interceptLink1Text }}</a> {{ interceptLinkBridge }} <a href="{{ interceptLink2 }}">{{ interceptLink2Text }}</a></p>
+            </div>
+        </div>
+
+ <!-- send interruptionSeen to change the style when page reloads -->       
+<fieldset class="visuallyhidden">
+<input type="text" name="interceptStyle" value="interruptionSeen">
+</fieldset>
+
+
+    <div class="form-group">
+      <input type="submit" class="button" value="Continue">
+    </div>
+
+</form>
+        </div>
+    </div>
+</div>

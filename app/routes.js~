@@ -46,7 +46,7 @@ res.render ('enquiry-start', viewData)
 });
 
 
-// Route for enquiry results page
+// Route for enquiry results page - ** needs some tidying and removing of old stuff **
 
 router.get('/enquiry-results', function (req, res, next){
   for (var propName in req.query) {
@@ -79,28 +79,25 @@ router.get('/enquiry-results', function (req, res, next){
 // Intercept section: pull out keywords and set intercept data
 
 if (enquiry.indexOf('passport') > -1) { 
-    var intercept = "Yes";
+    var intercept = true;
     var interceptTitle = "Help with passports";
-    var interceptDescription = "British Embassies can no longer deal with enquiries about renewing a passport.";
-    var interceptLink1Text = "Apply for a standard passport online.";
+    var interceptDescription = "British Embassies can no longer deal with enquiries regarding replacing or renewing a passport. Apply for a standard passport here. If you need to travel urgently apply for an emergency travel document";
     var interceptLink1 = 'https://www.gov.uk/apply-renew-passport';
-    var interceptLinkBridge = "If you need to travel urgently "; 
-    var interceptLink2Text = "apply for an emergency travel document.";
     var interceptLink2 = 'https://www.gov.uk/emergency-travel-document';
 }
 
 else if (enquiry.indexOf('visa') > -1) { 
-    var intercept = "Yes";
+    var intercept = true;
     var interceptTitle = "Help with visas";
-    var interceptDescription = "British Embassies can no longer deal with enquiries regarding visas.";
-    var interceptLink1Text = "Contact UK Visas and Immigration for help.";
+    var interceptDescription = "British Embassies can no longer deal with enquiries regarding visas. Please contact UK Visas and Immigration.";
     var interceptLink1 = 'https://www.gov.uk/check-uk-visa';
+    var interceptLink2 = 'https://www.gov.uk/check-uk-visa';
 }
 
 else if (enquiry.indexOf('assault') > -1) { 
-    var intercept = "Yes";
-    var interceptTitle = "Get help urgently";
-    var interceptDescription = "If you need immediate help call the embassy on 012345678908. It's best to call us if you need help because of an assault, accident or arrest.";
+    var intercept = true;
+    var interceptTitle = "Urgent assistance";
+    var interceptDescription = "If you have been assaulted and require assistance from embassy staff, please call us directly on XXXXXX";
 }
 
 // end intercept section
@@ -113,10 +110,7 @@ else if (enquiry.indexOf('assault') > -1) {
       intercept: intercept,
       interceptTitle: interceptTitle,
       interceptDescription: interceptDescription,
-      interceptLink1Text: interceptLink1Text,
       interceptLink1: interceptLink1,
-      interceptLinkBridge: interceptLinkBridge,
-      interceptLink2Text: interceptLink2Text,
       interceptLink2: interceptLink2,
 
       // these have not been set as variables, just grabbing from session, so different syntax with single quotes
@@ -125,9 +119,7 @@ else if (enquiry.indexOf('assault') > -1) {
       'contact_email_display': req.session.contact_email,
       'country_display': req.session.country,
       'post_display': req.session.post,
-      'resultsdescriptions' : req.session.resultsdescriptions,
-      'interceptStyle' : req.session.interceptStyle,
-      'formOnly' : req.session.formOnly
+      'resultdescriptions' : req.session.resultdescriptions
     }
 
 

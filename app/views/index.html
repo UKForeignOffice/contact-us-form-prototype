@@ -20,8 +20,133 @@
       <h2 class="heading-medium">Prototype versions</h2>
 
       <ul class="list list-bullet">
-        <li>Current production design</a>, accepting country and post parameters in the URL. Try with <a href="enquiry-start?country=Spain&post=British Embassy Malaga&resultdescriptions=yes">search result descriptions on</a> or with <a href="enquiry-start?country=Spain&post=British Embassy Malaga">descriptions off</a></li>
+        <li>Current production design</a>, search journey, choose parameters: </li>
+
+          <!-- Try with <a href="enquiry-start?country=Spain&post=British Embassy Malaga&resultsdescriptions=Yes">search result descriptions on</a> or with <a href="enquiry-start?country=Spain&post=British Embassy Malaga">descriptions off</a>. Try <a href="enquiry-start?country=Spain&post=British Embassy Malaga&interceptStyle=interruption">interruption on</a>. -->
       </ul>
+
+<form action="/enquiry-start" method="get" class="form">
+
+
+<div class="form-group">
+
+  <fieldset id="country" class="inline">
+    <h3 class="heading-small">
+     Country
+    </h3>
+
+    <label class="block-label selection-button-radio" for="ES" data-target="Spain-posts">
+    <input id="ES" type="radio" name="country" value="Spain">
+    Spain
+    </label>
+
+    <label class="block-label selection-button-radio" for="SA" data-target="South-Africa-posts">
+    <input id="SA" type="radio" name="country" value="South Africa">
+    South Africa
+    </label>
+  </fieldset> 
+
+<p></p>
+
+<div class="panel panel-border-narrow js-hidden" id="Spain-posts">
+  <fieldset id="post" class="inline">
+    <h3 class="heading-small">
+     Post
+    </h3>
+    <label class="block-label selection-button-radio" for="Malaga">
+    <input id="Malaga" type="radio" name="post" value="British Embassy Malaga">
+    British Embassy Malaga
+    </label>
+    <label class="block-label selection-button-radio" for="Madrid">
+    <input id="Madrid" type="radio" name="post" value="British Embassy Madrid">
+    British Embassy Madrid
+    </label>
+  </fieldset>
+  <br> 
+</div>
+
+
+<div class="panel panel-border-narrow js-hidden" id="South-Africa-posts">
+  <fieldset id="post" class="inline">
+    <h3 class="heading-small">
+     Post
+    </h3>
+    <label class="block-label selection-button-radio" for="Pretoria">
+    <input id="Pretoria" type="radio" name="post" value="British Embassy Pretoria">
+    British Embassy Pretoria
+    </label>
+  </fieldset>
+  <br>
+</div>
+
+
+<fieldset id="interceptStyle" class="inline">
+    <h3 class="heading-small">
+     Search results style
+    </h3>
+
+    <label class="block-label selection-button-radio" for="WithDescriptions">
+    <input id="WithDescriptions" type="radio" name="resultsdescriptions" value="Yes">
+    With descriptions
+    </label>
+
+    <label class="block-label selection-button-radio" for="WithoutDescriptions">
+    <input id="WithoutDescriptions" type="radio" name="resultsdescriptions" value="">
+    Without descriptions
+    </label>
+  </fieldset> 
+
+<p></p>
+
+  <fieldset id="interceptStyle" class="inline">
+    <h2 class="heading-small">
+     Keyword intercept style
+    </h2>
+
+    <label class="block-label selection-button-radio" for="interruption" data-target="intercept-keywords-interruption">
+    <input id="interruption" type="radio" name="interceptStyle" value="interruption">
+    Interruption card
+    </label>
+
+    <label class="block-label selection-button-radio" for="inset" data-target="intercept-keywords">
+    <input id="inset" type="radio" name="interceptStyle" value="inset">
+    Inset text
+    </label>
+
+    <label class="block-label selection-button-radio" for="warning" data-target="intercept-keywords">
+    <input id="warning" type="radio" name="interceptStyle" value="warning">
+    Warning text
+    </label>
+  </fieldset>            
+
+<p></p>
+
+ <div class="panel panel-border-narrow js-hidden" id="intercept-keywords-interruption">
+<p>To trigger an intercept, include one of the following words in your enquiry subject on the next page: <strong class="bold-small">passport, visa, assault</strong>. Options if continuing beyond the interruption:
+   <fieldset id="formonly" class="inline">
+    <label class="block-label selection-button-radio" for="formOnlyNo">
+    <input id="formOnlyNo" type="radio" name="formOnly" value="No">
+    Standard search results
+    </label>
+    <label class="block-label selection-button-radio" for="formOnlyYes">
+    <input id="formOnlyYes" type="radio" name="formOnly" value="Yes">
+    Contact form only
+    </label>
+  </fieldset><br>
+</p>
+</div> 
+
+ <div class="panel panel-border-narrow js-hidden" id="intercept-keywords">
+<p>To trigger an intercept, include one of the following words in your enquiry subject on the next page: <strong class="bold-small">passport, visa, assault</strong>.<br><br></p>
+</div> 
+
+
+<br>  
+<input type="submit" class="button button-start" value="Try it">
+
+</div>
+</form>
+
 
 
 

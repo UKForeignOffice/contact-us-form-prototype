@@ -71,3 +71,51 @@
     display: inline-block; 
     width: 100%
 }
+
+
+.notice .icon {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -17px;
+}
+
+.icon-important {
+    width: 35px;
+    height: 35px;
+    background-image: url(/public/images/icon-important.png);
+}
+
+
+.icon {
+    display: inline-block;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+}
+
+
+
+// Flash or interruption card styles from HMPO
+
+.flash-card{margin-top:1.04167em;padding:30px;background:#005ea5;color:#fff}
+@media (min-width: 769px){.flash-card{margin-top:1.25em;padding:60px}}
+.flash-card h1{margin-top:0}
+// @media (min-width: 769px){.flash-card .grid-row{min-height:17em}}
+.flash-card a{color:#fff}
+.flash-card a:link,.flash-card a:visited{color:#fff}
+.flash-card a:hover{color:#f2f2f2}
+.flash-card .button{background-color:#fff;position:relative;display:-moz-inline-stack;display:inline-block;padding:.526315em .789473em .263157em;border:none;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;-webkit-appearance:none;-webkit-box-shadow:0 2px 0 #d9d9d9;-moz-box-shadow:0 2px 0 #d9d9d9;box-shadow:0 2px 0 #d9d9d9;font-size:1em;line-height:1.25;text-decoration:none;-webkit-font-smoothing:antialiased;cursor:pointer;color:#0b0c0c;font-weight:700;color:#005ea5;-webkit-box-shadow:0 2px 0 #001526;-moz-box-shadow:0 2px 0 #001526;box-shadow:0 2px 0 #001526}
+.flash-card .button:visited{background-color:#fff}
+.flash-card .button:hover,.flash-card .button:focus{background-color:#f2f2f2}
+.flash-card .button:active{top:2px;-webkit-box-shadow:0 0 0 #fff;-moz-box-shadow:0 0 0 #fff;box-shadow:0 0 0 #fff}
+.flash-card .button.disabled,.flash-card .button[disabled="disabled"],.flash-card .button[disabled]{zoom:1;filter:alpha(opacity=50);opacity:.5}
+.flash-card .button.disabled:hover,.flash-card .button[disabled="disabled"]:hover,.flash-card .button[disabled]:hover{cursor:default;background-color:#fff}
+.flash-card .button.disabled:active,.flash-card .button[disabled="disabled"]:active,.flash-card .button[disabled]:active{top:0;-webkit-box-shadow:0 2px 0 #d9d9d9;-moz-box-shadow:0 2px 0 #d9d9d9;box-shadow:0 2px 0 #d9d9d9}
+.flash-card .button:link,.flash-card .button:hover,.flash-card .button:focus,.flash-card .button:visited{color:#0b0c0c}
+.flash-card .button:before{content:"";height:110%;width:100%;display:block;background:transparent;position:absolute;top:0;left:0}
+.flash-card .button:active:before{top:-10%;height:120%}
+.flash-card .button[rel="external"]:after{display:none;content:none;margin-left:0;margin-right:0}
+@media (min-width: 641px){.flash-card .button{padding-right:3.6em;padding-left:3.6em}}
+.flash-card .button:link,.flash-card .button:hover,.flash-card .button:focus,.flash-card .button:visited{color:#005ea5}
+.flash-card .button+.inline-options{margin-top:0.3em;padding-top:0}
+
