@@ -142,29 +142,27 @@ else if ((enquiry.indexOf('assault') > -1) || (enquiry.indexOf('urgent') > -1)) 
 
 // Enquiry submission confirmation page
 
-router.get('/enquiry-confirmation',function (req, res){
 
-var contact_name_display = req.query.contactname
-var contact_email_display = req.query.contactemail
-var enquirytext_display = req.query.enquirytext
-var enquirydetail_display = req.query.enquirydetail
-var country_display = req.query.country_display
-var post_display = req.query.post_display
+router.get('/enquiry-confirmation', function (req, res, next){
+  for (var propName in req.query) {
+    if (req.query.hasOwnProperty(propName)) {
+      req.session[propName] = req.query[propName];
+    }
+  }
+
+
 var reference_number = "ENQW00186"
 
 var viewData = {
-  'contact_name_display' : contact_name_display,
-  'contact_email_display' : contact_email_display, 
-  'enquirytext_display' : enquirytext_display, 
-  'country_display' : country_display, 
-  'enquirydetail_display' : enquirydetail_display,
-  'post_display' : post_display,
-  'reference_number' : reference_number
+  reference_number : reference_number,
+  'contact_name_display' : req.session.contactname,
+  'contact_email_display' : req.session.contactemail, 
+  'enquirytext_display' : req.session.enquirytext, 
+  'enquirydetail_display' : req.session.enquirydetail,
+  'country_display' : req.session.country, 
+  'post_display' : req.session.post
 }
 
-
-console.dir(req.query.enquirytext)
-console.dir(enquirytext_display)
 
 res.render('enquiry-confirmation', viewData)
 });
