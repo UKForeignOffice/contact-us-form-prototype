@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Contact an Embassy
+{% endblock %}
+
+{% block content %}
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Select to Autocomplete</title>
+	<script src="jquery-1.11.1.min.js"></script>
+	<script src="jquery-ui.min.js"></script>
+	<script src="jquery.select-to-autocomplete.js"></script>
+	<script>
+	  (function($){
+	    $(function(){
+	      $('select').selectToAutocomplete();
+	      $('form').submit(function(){
+	        alert( $(this).serialize() );
+	        return false;
+	      });
+	    });
+	  })(jQuery);
+	</script>
+
+<main id="content" role="main">
+  {% include "includes/phase_banner_alpha.html" %}
+ <div class="grid-row">
+  <div class="column-two-thirds">
+
+
+    <h1 class="form-title heading-large">
+      Advice on travelling to {{country_display}}
+    </h1>
+<p>GOV.UK offers many government services online for British people abroad.</p>
+    <h2>Try one of these popular topics to find the service you need.</h2>
+    <p>
+    <ul>
+    <li><a href="https://www.gov.uk/guidance/foreign-travel-checklist">Foreign travel checklist</a></li>
+    <li><a href="https://www.gov.uk/overseas-passports">Overseas passports</a></li>
+    <li><a href="https://www.gov.uk/becoming-a-british-citizen">Enquire about British nationality</a></li>
+    </ul>
+  </p>
+
+
+      <h2 class="heading-medium">About our enquiry service</h2>
+<p>We're unable to reply to any questions which are answered in our <a href="https://www.gov.uk/foreign-travel-advice/spain">travel advice</a> or the <a href="https://www.gov.uk/guidance/foreign-travel-checklist">foreign travel checklist</a>.</p>
+ 
+ <h2 class="heading-medium">Contact the {{post_display}}</h1> 
+
+<!-- form only for this case  -->
+{% include "includes/contact-form.html" %}
+<!-- end form only -->
+
+
+</div>
+</div>
+</main>
+{% endblock %}

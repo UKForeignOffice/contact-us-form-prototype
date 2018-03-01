@@ -152,14 +152,64 @@
 <p></p>
 
 
-      <h2 class="heading-medium">Canned searches</h2>
+<h2 class="heading-medium">Canned searches</h2>
 
-      
-       Some combinations that work well, bi-passing the initial enquiry subject page:
-      <ul class="list list-bullet">
-        <li>For high priority assistance, keyword "assault":<br><a href="/enquiry-results?enquirytext=assault&country=Spain&post=British+Embassy+Malaga&resultsdescriptions=&interceptStyle=interruption&formOnly=Yes">interruption card followed by contact form only, no search results</a></li>
-        <li>For lower priority signposting, keyword "visa":<br><a href="/enquiry-results?enquirytext=visa&country=Spain&post=British+Embassy+Malaga&resultsdescriptions=Yes&interceptStyle=inset">inset text above search results with descriptions</a></li>
-      </ul>
+Some combinations that work well, bi-passing the initial enquiry subject page:
+<ul class="list list-bullet">
+  <li>For high priority assistance, keyword "assault":<br><a href="/enquiry-results?enquirytext=assault&country=Spain&post=British+Embassy+Malaga&resultsdescriptions=&interceptStyle=interruption&formOnly=Yes">interruption card followed by contact form only, no search results</a></li>
+  <li>For lower priority signposting, keyword "visa":<br><a href="/enquiry-results?enquirytext=visa&country=Spain&post=British+Embassy+Malaga&resultsdescriptions=Yes&interceptStyle=inset">inset text above search results with descriptions</a></li>
+</ul>
+
+
+<h2 class="heading-medium">Travel advice journey</h2>
+
+<form action="/travel-advice" method="get" class="form">
+<div class="form-group">
+
+  <fieldset id="country" class="inline">
+    <h3 class="heading-small">
+     Country
+    </h3>
+
+    <label class="block-label selection-button-radio" for="TA-ES">
+    <input id="TA-ES" type="radio" name="country" value="Spain">
+    Spain
+    </label>
+
+    <label class="block-label selection-button-radio" for="TA-SA">
+    <input id="TA-SA" type="radio" name="country" value="South Africa">
+    South Africa
+    </label>
+  </fieldset> 
+
+<p></p>
+
+  <fieldset id="country" class="inline">
+    <h3 class="heading-small">
+     Type of enquiry
+    </h3>
+
+    <label class="block-label selection-button-radio" for="TA-General">
+    <input id="TA-General" type="radio" name="enquirytext" value="">
+    General
+    </label>
+
+    <label class="block-label selection-button-radio" for="TA-Previous">
+    <input id="TA-Previous" type="radio" name="enquirytext" value="Previous version of travel advice">
+    Previous version of travel advice
+    </label>
+  </fieldset> 
+
+<p></p><br>
+<input type="hidden" name="post" value="Travel advice team">
+<input type="submit" class="button button-start" value="Try this combination">
+
+</div>
+</form>
+
+<Br clear="all">
+
+
 
 
 

@@ -139,6 +139,27 @@ else if ((enquiry.indexOf('assault') > -1) || (enquiry.indexOf('urgent') > -1)) 
 });
 
 
+// Travel advice page
+
+router.get('/travel-advice', function (req, res, next){
+  for (var propName in req.query) {
+    if (req.query.hasOwnProperty(propName)) {
+      req.session[propName] = req.query[propName];
+    }
+  }
+
+var viewData = {
+  'country_display' : req.session.country, 
+  'post_display' : req.session.post,
+  'enquirytext_display' : req.session.enquirytext
+}
+
+
+res.render ('travel-advice', viewData)
+
+});
+
+
 
 // Enquiry submission confirmation page
 
