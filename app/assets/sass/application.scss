@@ -56,6 +56,21 @@
     padding: 0.36842em 2.15789em 0.21053em 0.84211em;
 }
 
+.button-secondary {
+  background-color: #dee0e2;
+  color: #0b0c0c;
+  box-shadow: 0 2px 0 #b5babe; }
+
+.button-secondary:visited {
+  background-color: #dee0e2;
+  color: #0b0c0c;
+  box-shadow: 0 2px 0 #b5babe; }
+
+.button-secondary:hover, .button-secondary:focus {
+  background-color: #d0d3d6;
+  color: #0b0c0c;
+  box-shadow: 0 2px 0 #b5babe; }
+
 .formfield-bold {
     font-weight: bold;
 }
@@ -118,4 +133,33 @@
 @media (min-width: 641px){.flash-card .button{padding-right:3.6em;padding-left:3.6em}}
 .flash-card .button:link,.flash-card .button:hover,.flash-card .button:focus,.flash-card .button:visited{color:#005ea5}
 .flash-card .button+.inline-options{margin-top:0.3em;padding-top:0}
+
+
+// Search box from legalisation
+
+#doc_search_button {
+    width: 42px;
+    height: 38px;
+    text-indent: -5000px;
+    cursor: pointer;
+    color: #fff;
+    background: #0b0c0c url(/public/images/search-button.png) no-repeat 3px 50%;
+    margin-left: -10px;
+}
+
+
+.typeahead,
+.tt-query,
+.tt-hint {
+  width: 300px;
+  height: 24px;
+  padding: 6px 12px;
+  font-size: 18px;
+  line-height: 24px;
+  border: 2px solid #ccc;
+  outline: none;
+  }
+
+.typeahead {
+  background-color: #fff; }
 

@@ -1,6 +1,26 @@
 
 <h2 class="heading-medium"> From what you've told us, we think these pages might help</h2>
 
+<!-- show search box so user can try again -->
+<form action="/enquiry-results" method="get" class="form">
+<fieldset>
+    <div>
+        <input
+            class="typeahead"
+            type="text"
+            id="doc_search_field"
+            value="{{enquiry}}"
+            name="enquirytext"
+            autocomplete="off"
+            role="combobox"
+            aria-autocomplete="list"
+            >
+        <input type="submit" id="doc_search_button" value="Search" class="button" />
+    </div><br>
+</fieldset>
+</form>
+<!-- end search box -->
+
 <ul>
 <li><a href="https://www.gov.uk{{results[0].link}}">{{ results[0].title }}</a>
 {%  if resultsdescriptions %}</br>{{ results[0].description }}</br></br>{% endif %}</li>
@@ -14,6 +34,11 @@
 {%  if resultsdescriptions %}</br>{{ results[4].description }}</br></br>{% endif %}</li>
 </ul>
 <p><a class="bold-xsmall" href="https://www.gov.uk/search?q={{enquiry}}">Find more results on GOV.UK</a></p>
+
+
+
+
+<!-- end show search input -->
 
 
 <form action="/enquiry-confirmation" method="get" class="form">
