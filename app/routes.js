@@ -57,15 +57,28 @@ router.get('/enquiry-results', function (req, res, next){
 
 
   var enquirytext_display = req.session.enquirytext
-  
-  var enquiry1 = keyword_extractor.extract(enquirytext_display,{
+
+// See https://www.npmjs.com/package/keyword-extractor for this module and its options
+  var enquirycleaned = keyword_extractor.extract(enquirytext_display,{
     language:'english',
     remove_digits: true,
     return_changed_case:true,
-    remove_duplicates: false
+    remove_duplicates: false,
+    return_chained_words:  true
   })
-  var enquiry = enquiry1+' '+req.session.country
-    
+
+// Don't add anything in if the user has edited the query
+if (req.session.searchQueryEdited) { 
+var enquiry = enquirycleaned
+}
+
+// Add the country in by default if this is a first search
+else { 
+  var enquiry = enquirycleaned+' '+req.session.country
+}
+
+
+   
   var date = new Date()
 
   request('https://www.gov.uk/api/search.json?count=5&q='+enquiry, function(error, response, body){

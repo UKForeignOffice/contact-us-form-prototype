@@ -47,32 +47,48 @@
 
 
 
- <fieldset>
+
       <legend class="heading-medium">Contacting the Embassy</legend>
-<p>Before your enquiry is submitted we will suggest some GOV.UK pages that may answer your question faster. You can submit your enquiry on the next page.</p>
+<p>Before your enquiry is submitted we will search for GOV.UK pages that may answer your question faster. You can submit your enquiry on the next page.</p>
       <div class="group">
            
            <p class="warning-message panel panel-border-narrow">Don't include personal or financial information, eg your National Insurance number or credit card details.</p>
 
 
+ <fieldset>
         <label for="textdetails" class="heading-small">What is your enquiry about?</label><br>
+ 
+  <!-- old style search box with big green search button 
         <p><input type="text" name="enquirytext" class="form-control-2-3 counted" id="textdetails" required aria-required="true"></input></p>
-
 
         <p id="textdetailscounter" class="form-hint" aria-live="polite" aria-atomic="false">(Limit is 75 characters)</p>
       </div>
     </fieldset>
 
-<!-- think this is redunadant now using the session
-<fieldset class="visuallyhidden">
-    <input type="text" name="country_display" value="{{country_display}}">
-    <input type="text" name="post_display" value="{{post_display}}">
-</fieldset>
--->
-
     <div class="form-group">
       <input type="submit" class="button button-start" value="Search">
     </div>
+-->
+
+
+<!-- New style search box -->
+<fieldset>
+    <div>
+        <input
+            class="typeahead"
+            type="text"
+            id="doc_search_field"
+            value=""
+            name="enquirytext"
+            autocomplete="off"
+            role="combobox"
+            aria-autocomplete="list"
+            >
+        <input type="submit" id="doc_search_button" value="Search" class="button" />
+    </div><br>
+</fieldset>
+
+ <!-- end new style search box -->
 
   </form>
   <a class="button visuallyhidden" href="/skip-to-form" role="button">Skip</a>
