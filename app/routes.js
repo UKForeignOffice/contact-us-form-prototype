@@ -46,7 +46,7 @@ res.render ('enquiry-start', viewData)
 });
 
 
-// Route for enquiry results page
+// Enquiry results page
 
 router.get('/enquiry-results', function (req, res, next){
   for (var propName in req.query) {
@@ -200,10 +200,6 @@ var viewData = {
 
 res.render('enquiry-confirmation', viewData)
 });
-
-
-
-
 
 
 
