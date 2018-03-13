@@ -6,19 +6,4 @@ As part of the email triage/handling project, we're looking at improving the fro
 
 ## About the prototype
 
-The prototype demonstrates a three stage submission process 
-
-1. Enter enquiry
-2. Review suggested content and/or submit enquiry
-3. Confirmation page
-
-## Functionality
-
-The prototype will walk people through the process, however, the API look up needed to serve content does not exist in the prototype. Search responses are hard-coded for particular key words.
-
-These include:
-
-health = ["health", "medicine", "medicines", "doctor"]
-passport = ["passport", "lost", "renew", "Passport"]
-lifestyle = ["lifestyle", "cost", "sunshine"]
-
+The prototype offers different variants of journeys for users, including search suggestions and intercepts for key subjects
